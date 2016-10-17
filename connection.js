@@ -1,4 +1,5 @@
 var mysql = require('mysql');
+var config = require('./config');
 
 function Connection() {
   this.pool = null;
@@ -6,10 +7,10 @@ function Connection() {
   this.init = function() {
     this.pool = mysql.createPool({
       connectionLimit: 10,
-      host: '10.0.0.105',
-      user: 'weewx',
-      password: 'weewx123!',
-      database: 'weewx'
+      host: config.db.host,
+      user: config.db.username,
+      password: config.db.password,
+      database: config.db.database
     });
   };
 
